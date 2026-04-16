@@ -1,18 +1,8 @@
 import requests
-
-def getPoke(poke):
-    response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{poke.lower()}")
+def afact(anime_name):
+    response = requests.get("https://anime-facts-rest-api.herokuapp.com/api/v1")
     if response.status_code != 200:
-        print("Error fetching data!")
+        print("Error fetching data!") 
         return None
-    
-    data = response.json()
-    return {
-        "name": data["name"],
-        "height": data["height"],
-        "weight": data["weight"],
-        "types": [t["type"]["name"] for t in data["types"]]
-    }
-
-pokemon = getPoke("Bulbasaur")
-print(pokemon)
+    data = response.json
+afact("bleach")
