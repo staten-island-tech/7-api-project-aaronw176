@@ -1,8 +1,15 @@
+import tkinter as tk
 import requests
-def afact(anime_name):
-    response = requests.get("https://anime-facts-rest-api.herokuapp.com/api/v1")
+window = tk.Tk()
+window.title("useless facts")
+window.geometry("400x250")
+window.resizable(False, False)
+
+def afact(amount):
+    response = requests.get("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en")
     if response.status_code != 200:
         print("Error fetching data!") 
         return None
-    data = response.json
-afact("bleach")
+    data = response.json()
+    print(data['text'])
+afact(1)
