@@ -14,11 +14,16 @@ def afact():
     data = response.json()
     print(data['text']) 
 def no_command():
-    print("Why are you here then smart guy")
+    print("Ok smart guy I see how it is")
+def nothing():
+    print("Bro what is the point of clicking me I do nothing, stop wasting your time")
 fact_button = tk.Button(
-    window, text="Yes", font=("Arial", 14), command=afact)
-fact_button.pack(pady=10)
+    window, text="Yes", font=("Arial", 14), width=10, command=afact)
+fact_button.place(x=60, y=75)
 no_button = tk.Button(
-    window, text="No", font=("Arial", 14), command=no_command)
-no_button.pack(pady=10)
-window.mainloop()
+    window, text="No", font=("Arial", 14), width=10, command=no_command)
+no_button.place(x=225,y=75)
+button = tk.Button(
+    window, text="", font=("Arial", 14), command=nothing)
+button.place(x=195,y=60)
+window.mainloop()  
