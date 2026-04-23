@@ -5,7 +5,7 @@ window.title("useless facts")
 window.geometry("1920x1000")
 window.resizable(True, True)
 
-prompt = tk.Label(window, text="Would you like to know a useless fact", font=("Arial", 24), justify="center")
+prompt = tk.Label(window, text="Would you like to know a useless fact", font=("Arial", 24), wraplength=1920, justify="center")
 prompt.pack(pady=10)
 
 def afact():
@@ -38,7 +38,7 @@ no_button = tk.Button(
 no_button.place(x=1100,y=400)
 
 button = tk.Button(
-    window, text="", command=change_nothing_button)
-button.place(x=195,y=60)
+    window, text="", command=change_nothing_button, relief="groove")
+button.place(x=0,y=1000)
 
 window.mainloop()  
