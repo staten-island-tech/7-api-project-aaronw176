@@ -4,6 +4,8 @@ window = tk.Tk()
 window.title("useless facts")
 window.geometry("1920x1000")
 window.resizable(True, True)
+button_press = False
+
 def text1():
     prompt.config(text="Did you seriously expect something different?")
 
@@ -25,12 +27,8 @@ def text6():
 def text7():
     prompt.config(text="Alright smart guy you win, go click on the no button")
 
-
 prompt = tk.Label(window, text="Would you like to know a useless fact", font=("Arial", 24), wraplength=1920, justify="center")
 prompt.pack(pady=10)
-
-
-
 
 def afact():
     response = requests.get("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en")
@@ -40,10 +38,12 @@ def afact():
     data = response.json()
     return data
 
-
-
 def change_nothing_button():
-    cancel_task_2()
+    button_pressed()
+    try:
+        cancel_task_2()
+    except NameError:
+        ""
     prompt.config(text="Bro what is the point of clicking me I do nothing, stop wasting your time")
     global unotext
     unotext = window.after(3000, text1)
@@ -62,22 +62,34 @@ def cancel_task():
 
 def change_topright_button():
     cancel_task()
-    prompt.config(text="you know nothing is going to happen still right..?")
-    global cuatrotext
-    cuatrotext = window.after(15000, text4)
-    global cincotext
-    cincotext = window.after(20000, text5)
-    global seistext
-    seistext = window.after(25000, text6)
-    global sietetext
-    sietetext = window.after(30000, text7)
+    cancel_task_2()
+    global button_press
+    if button_press == True:
+        prompt.config(text="you know nothing is going to happen still right..?")
+        global cuatrotext
+        cuatrotext = window.after(15000, text4)
+        global cincotext
+        cincotext = window.after(20000, text5)
+        global seistext
+        seistext = window.after(25000, text6)
+        global sietetext
+        sietetext = window.after(30000, text7)
+        button_press = False
+    else:
+        prompt.config(text="How did you find this button..? buttons unknown?")
+
+def button_pressed():
+    global button_press
+    button_press = True
 
 def cancel_task_2():
-    window.after_cancel(cuatrotext)
-    window.after_cancel(cincotext)
-    window.after_cancel(seistext)
-    window.after_cancel(sietetext)
-
+    try:
+        window.after_cancel(cuatrotext)
+        window.after_cancel(cincotext)
+        window.after_cancel(seistext)
+        window.after_cancel(sietetext)
+    except NameError:
+        ""
 
 def change_no_button():
     cancel_task()
