@@ -25,7 +25,10 @@ def text6():
     prompt.config(text="...")
 
 def text7():
-    prompt.config(text="Alright smart guy you win, go click on the no button")
+    prompt.config(text="you know this guy named yuchen, hes a pretty big bum yeah thats it")
+
+def text8():
+    prompt.config(text="Alright smart guy you win, go press the no button")
 
 prompt = tk.Label(window, text="Would you like to know a useless fact", font=("Arial", 24), wraplength=1920, justify="center")
 prompt.pack(pady=10)
@@ -39,7 +42,6 @@ def afact():
     return data
 
 def change_nothing_button():
-    button_pressed()
     try:
         cancel_task_2()
     except NameError:
@@ -51,6 +53,7 @@ def change_nothing_button():
     dostext = window.after(5000, text2)
     global trestext
     trestext = window.after(10000,text3)
+    button_pressed()
 
 def cancel_task():
     try:
@@ -69,11 +72,13 @@ def change_topright_button():
         global cuatrotext
         cuatrotext = window.after(15000, text4)
         global cincotext
-        cincotext = window.after(20000, text5)
+        cincotext = window.after(25000, text5)
         global seistext
-        seistext = window.after(25000, text6)
+        seistext = window.after(35000, text6)
         global sietetext
-        sietetext = window.after(30000, text7)
+        sietetext = window.after(45000, text7)
+        global ochotext
+        ochotext = window.after(55000, text8)
         button_press = False
     else:
         prompt.config(text="How did you find this button..? buttons unknown?")
@@ -88,6 +93,7 @@ def cancel_task_2():
         window.after_cancel(cincotext)
         window.after_cancel(seistext)
         window.after_cancel(sietetext)
+        window.after_cancel(ochotext)
     except NameError:
         ""
 
